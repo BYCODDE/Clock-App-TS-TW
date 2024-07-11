@@ -1,8 +1,12 @@
+import arrowDown from "../assets/desktop/icon-arrow-down.svg";
+import moon from "../assets/desktop/icon-moon.svg";
+
+
 export default function Main() {
   return (
     <main className="mt-[70%] flex flex-col justify-items-start">
       <div className="flex gap-[20px]">
-        <img src="src/assets/desktop/icon-moon.svg" alt="icon-moon" />
+        <img src={moon} alt="icon-moon" />
         <h2 className="text-[15px] leading-[25px] uppercase  tracking-[3px]">
           GOOD EVENING
         </h2>
@@ -28,10 +32,7 @@ export default function Main() {
           MORE
         </span>
         <div className="rounded-[50%] bg-[#303030] w-[32px] h-[32px] flex items-center justify-center">
-          <img
-            src="src/assets/desktop/icon-arrow-down.svg"
-            alt="icon-arrow-down"
-          />
+          <img src={arrowDown} alt="icon-arrow-down" />
         </div>
       </button>
     </main>
