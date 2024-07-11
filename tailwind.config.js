@@ -6,6 +6,10 @@ export default {
       backgroundImage: {
         "mobile-image": "url('src/assets/mobile/nighttime.jpg')",
       },
+
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
