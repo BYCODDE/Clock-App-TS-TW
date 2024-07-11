@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "mobile-image": "url('src/assets/mobile/nighttime.jpg')",
+        "mobile-image": "url('/mobile/bg-image-nighttime.jpg')",
       },
 
       fontFamily: {

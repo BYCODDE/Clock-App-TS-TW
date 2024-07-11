@@ -1,4 +1,4 @@
-import refresh from "../assets/desktop/icon-refresh.svg";
+import refresh from "/desktop/icon-refresh.svg";
 export default function Header() {
   return (
     <header>

@@ -1,5 +1,5 @@
-import arrowDown from "../assets/desktop/icon-arrow-down.svg";
-import moon from "../assets/desktop/icon-moon.svg";
+import arrowDown from "/desktop/icon-arrow-down.svg";
+import moon from "/desktop/icon-moon.svg";
 
 
 export default function Main() {
