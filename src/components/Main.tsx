@@ -25,7 +25,7 @@ export default function Main() {
         </p>
       </div>
       <button
-        className="bg-[#FFF] rounded-[28px] flex p-[13px] pr-[4px] max-h-[39px] justify-between items-center gap-[15px] max-w-[115px]"
+        className="bg-[#FFF] rounded-[28px] flex p-[13px] pr-[4px] max-h-[39px] justify-between items-center gap-[15px] max-w-[115px] cursor-pointer"
         type="button"
       >
         <span className="text-[#000] font-bold leading-[14px] tracking-[3.75px] uppercase opacity-50">
