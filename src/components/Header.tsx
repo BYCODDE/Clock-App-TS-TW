@@ -6,14 +6,21 @@ export default function Header() {
   ]);
   const [author, setAuthor] = useState(["Ada Lovelace"]);
   const fetchQuote = async () => {
-    const response = await fetch(
-      "https://recite.onrender.com/random/quote-from-db"
-    );
-    const data = await response.json();
-    setQuote(data.quote);
-    setAuthor(data.author);
-    console.log(data.author);
+    try {
+      const response = await fetch(
+        "https://recite.onrender.com/random/quote-from-db"
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setQuote(data.quote);
+      setAuthor(data.author);
+    } catch (error) {
+      console.error("Error fetching quote:", error);
+    }
   };
+
   useEffect(() => {
     fetchQuote();
   }, []);
