@@ -2,7 +2,7 @@ import { useState } from "react";
 import refresh from "/desktop/icon-refresh.svg";
 export default function Header() {
   const [quote, setQuote] = useState(null);
-  
+
   return (
     <header>
       <div className="flex items-center justify-between">
