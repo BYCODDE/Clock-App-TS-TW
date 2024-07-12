@@ -1,40 +1,59 @@
 import { useEffect, useState } from "react";
 import arrowDown from "/desktop/icon-arrow-down.svg";
 import moon from "/desktop/icon-moon.svg";
+import { parseISO, format } from "date-fns";
 
 export default function Main() {
   const [timeData, setTimeData] = useState({
     date: "",
-    time: "",
+    datetime: "",
     week: "",
     year: "",
     city: "",
     api: "",
     country_code: "",
     country_code_iso3: "",
-    country_capital:"",
+    country_capital: "",
+  });
+
+  const [time, setTime] = useState({
+    datetime: "",
   });
 
   const fetchTime = async () => {
-    const response = await fetch("http://worldtimeapi.org/api/ip");
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch("http://worldtimeapi.org/api/ip");
+      const data = await response.json();
+      setTime(data);
+      console.log(data.datetime);
+    } catch (error) {
+      console.error("Error fetching time data:", error);
+    }
+  };
 
-    // const response2 = await fetch(`https://ipinfo.io/json?token=${API_KEY}`);
-    // const data2 = await response2.json();
-    // console.log(data2);
-  };
   const fetchApi = async () => {
-    const response = await fetch("https://api.ipify.org?format=json");
-    const data = await response.json();
-    const ipAddress = data.ip;
-    timeData.api = ipAddress;
-    const response2 = await fetch(`https://ipapi.co/${timeData.api}/json/`);
-    const data2 = await response2.json();
-    setTimeData(data2);
-    console.log(data2);
-    console.log("Client IP Address:", ipAddress);
+    try {
+      const response = await fetch("https://api.ipify.org?format=json");
+      const data = await response.json();
+      const ipAddress = data.ip;
+
+      const response2 = await fetch(`https://ipapi.co/${ipAddress}/json/`);
+      const data2 = await response2.json();
+      setTimeData({ ...data2, api: ipAddress });
+      console.log(data2);
+    } catch (error) {
+      console.error("Error fetching IP data:", error);
+    }
   };
+
+  function formatTimestamp(timestamp: string) {
+    if (!timestamp) return "";
+    return  new Date(timestamp).toLocaleString().slice(11,16);
+  }
+
+  const formattedTime = formatTimestamp(time.datetime);
+  time.datetime = formattedTime;
+console.log(time.datetime);
 
   useEffect(() => {
     fetchTime();
@@ -52,7 +71,8 @@ export default function Main() {
       <div className="">
         <div className="mt-[16px] flex items-end gap-[13px]">
           <p className="text-[100px] leading-[100px] uppercase  tracking-[-2.5px] font-bold">
-            23:14
+            {time.datetime}
+
           </p>
           <span className="text-[15px] leading-[28px] uppercase  font-[300]">
             {timeData.country_code_iso3}
