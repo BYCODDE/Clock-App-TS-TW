@@ -1,7 +1,10 @@
-.bg-day{
-
-  background-image: url('/mobile/bg-image-daytime.jpg');
+.bg-day {
+  background-image: url("/mobile/bg-image-daytime.jpg");
 }
-.bg-night{
-  background-image: url('/mobile/bg-image-nighttime.jpg');
+.bg-night {
+  background-image: url("/mobile/bg-image-nighttime.jpg");
+}
+
+#blur {
+  backdrop-filter: blur(20.387113571166992px);
 }

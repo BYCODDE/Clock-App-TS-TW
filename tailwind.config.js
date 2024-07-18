@@ -3,10 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      backgroundImage: {
-        "mobile-image": "url('/mobile/bg-image-nighttime.jpg')",
-        "mobile-image2": "url('/mobile/bg-image-daytime.jpg')",
-      },
+      // backgroundImage: {
+      //   "mobile-image": "url('/mobile/bg-image-nighttime.jpg')",
+      //   "mobile-image2": "url('/mobile/bg-image-daytime.jpg')",
+      // },
 
       fontFamily: {
         inter: ["Inter", "sans-serif"],
@@ -14,6 +14,8 @@ export default {
 
       colors: {
         "custom-black": "rgba(0, 0, 0, 0.75)",
+
+        "custom-white": "rgba(255, 255, 255, 0.75)",
       },
     },
   },

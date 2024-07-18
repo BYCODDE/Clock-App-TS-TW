@@ -9,7 +9,7 @@ interface MainProps {
   setDay: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Main({ isLess, setIsLess,day,setDay }: MainProps) {
+export default function Main({ isLess, setIsLess, day, setDay }: MainProps) {
   const [timeData, setTimeData] = useState({
     date: "",
     datetime: "",
@@ -60,8 +60,6 @@ export default function Main({ isLess, setIsLess,day,setDay }: MainProps) {
     fetchTime();
     fetchApi();
   }, []);
-
-
 
   useEffect(() => {
     const currentTime = time.datetime.slice(11, 16);
@@ -120,7 +118,14 @@ export default function Main({ isLess, setIsLess,day,setDay }: MainProps) {
         </div>
       </button>
       {isLess && (
-        <div className="bg-custom-black pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0 font-#FFF  ">
+        <div
+          id={"blur"}
+          className={`${
+            day
+              ? " bg-custom-white text-[#303030]"
+              : "bg-custom-black text-[#FFF]"
+          } pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0  `}
+        >
           <div className="flex justify-between">
             <p className="font-[400] leading-[28px] tracking-[2px] opacity-80  uppercase">
               CURRENT TIMEZONE
