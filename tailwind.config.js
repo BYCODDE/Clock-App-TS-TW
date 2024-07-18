@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         "mobile-image": "url('/mobile/bg-image-nighttime.jpg')",
+        "mobile-image2": "url('/mobile/bg-image-daytime.jpg')",
       },
 
       fontFamily: {

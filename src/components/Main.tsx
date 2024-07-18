@@ -5,9 +5,11 @@ import sun from "/desktop/icon-sun.svg";
 interface MainProps {
   isLess: boolean;
   setIsLess: React.Dispatch<React.SetStateAction<boolean>>;
+  day: boolean;
+  setDay: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Main({ isLess, setIsLess }: MainProps) {
+export default function Main({ isLess, setIsLess,day,setDay }: MainProps) {
   const [timeData, setTimeData] = useState({
     date: "",
     datetime: "",
@@ -59,7 +61,7 @@ export default function Main({ isLess, setIsLess }: MainProps) {
     fetchApi();
   }, []);
 
-  const [day, setDay] = useState(false);
+
 
   useEffect(() => {
     const currentTime = time.datetime.slice(11, 16);
