@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import arrowDown from "/desktop/icon-arrow-down.svg";
 import moon from "/desktop/icon-moon.svg";
-import { parseISO, format } from "date-fns";
+// import { parseISO, format } from "date-fns";
 
 export default function Main() {
   const [timeData, setTimeData] = useState({
@@ -19,13 +19,14 @@ export default function Main() {
   const [time, setTime] = useState({
     datetime: "",
   });
+console.log(time.datetime.slice(11, 16));
 
   const fetchTime = async () => {
     try {
       const response = await fetch("http://worldtimeapi.org/api/ip");
       const data = await response.json();
       setTime(data);
-      console.log(data.datetime);
+      console.log(time);
     } catch (error) {
       console.error("Error fetching time data:", error);
     }
@@ -46,14 +47,14 @@ export default function Main() {
     }
   };
 
-  function formatTimestamp(timestamp: string) {
-    if (!timestamp) return "";
-    return  new Date(timestamp).toLocaleString().slice(11,16);
-  }
+  // function formatTimestamp(timestamp: string) {
+  //   if (!timestamp) return "";
+  //   return  new Date(timestamp).toLocaleString().slice(11,16);
+  // }
 
-  const formattedTime = formatTimestamp(time.datetime);
-  time.datetime = formattedTime;
-console.log(time.datetime);
+//   const formattedTime = formatTimestamp(time.datetime);
+//   time.datetime = formattedTime;
+// console.log(time.datetime);
 
   useEffect(() => {
     fetchTime();
@@ -71,8 +72,7 @@ console.log(time.datetime);
       <div className="">
         <div className="mt-[16px] flex items-end gap-[13px]">
           <p className="text-[100px] leading-[100px] uppercase  tracking-[-2.5px] font-bold">
-            {time.datetime}
-
+            {time.datetime.slice(11, 16)}
           </p>
           <span className="text-[15px] leading-[28px] uppercase  font-[300]">
             {timeData.country_code_iso3}
