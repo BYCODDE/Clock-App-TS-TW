@@ -18,10 +18,14 @@ export default function Main({ isLess, setIsLess }: MainProps) {
     country_code: "",
     country_code_iso3: "",
     country_capital: "",
+    timezone: "",
   });
 
   const [time, setTime] = useState({
     datetime: "",
+    day_of_week: "",
+    day_of_year: "",
+    week_number: "",
   });
 
   const fetchTime = async () => {
@@ -99,24 +103,30 @@ export default function Main({ isLess, setIsLess }: MainProps) {
         </div>
       </button>
       {isLess && (
-        <div
-          className="bg-custom-black pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0"
-        >
+        <div className="bg-custom-black pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0 font-#FFF  ">
           <div className="flex justify-between">
-            <p>CURRENT TIMEZONE</p>
-            <p>Europe/London</p>
+            <p className="font-[400] leading-[28px] tracking-[2px] opacity-80  uppercase">
+              CURRENT TIMEZONE
+            </p>
+            <p className="font-bold text-[20px]">{timeData.timezone}</p>
           </div>
           <div className="flex justify-between">
-            <p>Day of the year</p>
-            <p>295</p>
+            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80 ">
+              Day of the year
+            </p>
+            <p className="font-bold text-[20px]">{time.day_of_year}</p>
           </div>
           <div className="flex justify-between">
-            <p>Day of the week</p>
-            <p>5</p>
+            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+              Day of the week
+            </p>
+            <p className="font-bold text-[20px]">{time.day_of_week}</p>
           </div>
           <div className="flex justify-between">
-            <p>Week number</p>
-            <p>42</p>
+            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+              Week number
+            </p>
+            <p className="font-bold text-[20px]">{time.week_number}</p>
           </div>
         </div>
       )}
