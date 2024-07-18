@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import refresh from "/desktop/icon-refresh.svg";
-export default function Header() {
+export default function Header({ isLess }: { isLess: boolean }) {
   const [quote, setQuote] = useState([
     "The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.",
   ]);
@@ -27,13 +27,16 @@ export default function Header() {
 
   return (
     <header>
-      <div className="flex items-center justify-between ">
+      <div
+        className={`flex items-center justify-between ${isLess ? "hidden" : "block"}`}
+        // onChange={() => setIsLess(!isLess)}
+      >
         <div className="max-w-[279px]">
           <p>{quote}</p>
           <h3 className="mt-[8px] font-bold">{author}</h3>
         </div>
         <img
-          className="mb-[60px] cursor-pointer"
+          className="mb-[20px] mr-[10px] cursor-pointer"
           src={refresh}
           alt="refresh_svg"
           onClick={fetchQuote}

@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import arrowDown from "/desktop/icon-arrow-down.svg";
 import moon from "/desktop/icon-moon.svg";
-// import { parseISO, format } from "date-fns";
 
-export default function Main() {
+interface MainProps {
+  isLess: boolean;
+  setIsLess: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Main({ isLess, setIsLess }: MainProps) {
   const [timeData, setTimeData] = useState({
     date: "",
     datetime: "",
@@ -19,7 +23,6 @@ export default function Main() {
   const [time, setTime] = useState({
     datetime: "",
   });
-console.log(time.datetime.slice(11, 16));
 
   const fetchTime = async () => {
     try {
@@ -47,22 +50,17 @@ console.log(time.datetime.slice(11, 16));
     }
   };
 
-  // function formatTimestamp(timestamp: string) {
-  //   if (!timestamp) return "";
-  //   return  new Date(timestamp).toLocaleString().slice(11,16);
-  // }
-
-//   const formattedTime = formatTimestamp(time.datetime);
-//   time.datetime = formattedTime;
-// console.log(time.datetime);
-
   useEffect(() => {
     fetchTime();
     fetchApi();
   }, []);
 
   return (
-    <main className="mt-[70%] flex flex-col justify-items-start">
+    <main
+      className={`${
+        isLess ? "mt-[-12rem]" : "mt-[40%]"
+      } flex flex-col justify-items-start`}
+    >
       <div className="flex gap-[20px] items-center">
         <img src={moon} alt="icon-moon" />
         <h2 className="text-[15px] leading-[25px] uppercase  tracking-[3px]">
@@ -85,14 +83,43 @@ console.log(time.datetime.slice(11, 16));
       <button
         className="bg-[#FFF] rounded-[28px] flex p-[13px] pr-[4px] max-h-[39px] justify-between items-center gap-[15px] max-w-[115px] cursor-pointer"
         type="button"
+        onClick={() => setIsLess(!isLess)}
       >
         <span className="text-[#000] font-bold leading-[14px] tracking-[3.75px] uppercase opacity-50">
-          MORE
+          {isLess ? "LESS" : "MORE"}
         </span>
         <div className="rounded-[50%] bg-[#303030] w-[32px] h-[32px] flex items-center justify-center">
-          <img src={arrowDown} alt="icon-arrow-down" />
+          <img
+            src={arrowDown}
+            alt="icon-arrow-down"
+            className={`${
+              isLess ? "rotate-180" : " "
+            } flex justify-center items-center`}
+          />
         </div>
       </button>
+      {isLess && (
+        <div
+          className="bg-custom-black pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0"
+        >
+          <div className="flex justify-between">
+            <p>CURRENT TIMEZONE</p>
+            <p>Europe/London</p>
+          </div>
+          <div className="flex justify-between">
+            <p>Day of the year</p>
+            <p>295</p>
+          </div>
+          <div className="flex justify-between">
+            <p>Day of the week</p>
+            <p>5</p>
+          </div>
+          <div className="flex justify-between">
+            <p>Week number</p>
+            <p>42</p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

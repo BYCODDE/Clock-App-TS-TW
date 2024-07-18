@@ -10,6 +10,10 @@ export default {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },
+
+      colors: {
+        "custom-black": "rgba(0, 0, 0, 0.75)",
+      },
     },
   },
   plugins: [],
