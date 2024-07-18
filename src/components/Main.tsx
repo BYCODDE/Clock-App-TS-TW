@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import arrowDown from "/desktop/icon-arrow-down.svg";
 import moon from "/desktop/icon-moon.svg";
-
+import sun from "/desktop/icon-sun.svg";
 interface MainProps {
   isLess: boolean;
   setIsLess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -59,6 +59,16 @@ export default function Main({ isLess, setIsLess }: MainProps) {
     fetchApi();
   }, []);
 
+  const [day, setDay] = useState(false);
+
+  useEffect(() => {
+    const currentTime = time.datetime.slice(11, 16);
+
+    if (currentTime === "06:00" || currentTime === "18:00") {
+      setDay((prevDay) => !prevDay);
+    }
+  }, [time.datetime]);
+
   return (
     <main
       className={`${
@@ -66,9 +76,14 @@ export default function Main({ isLess, setIsLess }: MainProps) {
       } flex flex-col justify-items-start`}
     >
       <div className="flex gap-[20px] items-center">
-        <img src={moon} alt="icon-moon" />
+        {day ? (
+          <img src={sun} alt="icon-sun" />
+        ) : (
+          <img src={moon} alt="icon-moon" />
+        )}
+
         <h2 className="text-[15px] leading-[25px] uppercase  tracking-[3px]">
-          GOOD EVENING, IT’S CURRENTLY
+          {day ? "GOOD MORNING " : "GOOD EVENING"}
         </h2>
       </div>
       <div className="">
