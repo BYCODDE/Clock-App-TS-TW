@@ -99,29 +99,31 @@ export default function Main({
           <img src={moon} alt="icon-moon" />
         )}
 
-        <h2 className="md:text-[18px] text-[15px] leading-[25px] uppercase tracking-[3px]">
+        <h2 className=" lg:text-[20px] md:text-[18px] text-[15px] leading-[25px] uppercase tracking-[3px]">
           {message}
         </h2>
       </div>
       <div className="">
-        <div className="mt-[16px] flex items-end gap-[13px]">
-          <p className="md:text-[175px]    text-[100px] leading-[100px] uppercase  tracking-[-2.5px] font-bold">
+        <div className="lg:mt-[32px]  mt-[16px] flex items-end gap-[13px]">
+          <p className=" lg:text-[200px]   md:text-[175px]    text-[100px] leading-[100px] uppercase  tracking-[-2.5px] font-bold">
             {time.datetime.slice(11, 16)}
           </p>
-          <span className="md:text-[32px] text-[15px] leading-[28px] uppercase  font-[300]">
+          <span className="lg:text-[40px]   md:text-[32px] text-[15px] leading-[28px] uppercase  font-[300]">
             {timeData.country_code_iso3}
           </span>
         </div>
-        <p className="md:mt-[40px] md:text-[18px] font-bold text-[15px] leading-[28px] uppercase  tracking-[3px]  mt-[16px] mb-[48px]">
+        <p className=" lg:text-[24px]  lg:mt-[60px] md:mt-[40px] md:text-[18px] font-bold text-[15px] leading-[28px] uppercase  tracking-[3px]  mt-[16px] mb-[48px]">
           IN {timeData.country_capital}, {timeData.country_code}
         </p>
       </div>
       <button
-        className="md:max-w-[146px] md:max-h-[46px]  bg-[#FFF] rounded-[28px] flex p-[13px] pr-[4px] max-h-[39px] justify-between items-center gap-[15px] max-w-[115px] cursor-pointer"
+        className={`${
+          isLess ? "lg:top-[22rem]" : "lg:top-[36rem]"
+        }    lg:absolute lg:bottom-0 lg:right-[3rem]  md:max-w-[146px] md:max-h-[46px]  bg-[#FFF] rounded-[28px] flex p-[13px] pr-[4px] max-h-[39px] justify-between items-center gap-[15px] max-w-[115px] cursor-pointer`}
         type="button"
         onClick={() => setIsLess(!isLess)}
       >
-        <span className="md:text-[22px]   text-[#000] font-bold leading-[14px] tracking-[3.75px] uppercase opacity-50">
+        <span className="      md:text-[22px]   text-[#000] font-bold leading-[14px] tracking-[3.75px] uppercase opacity-50">
           {isLess ? "LESS" : "MORE"}
         </span>
         <div className="rounded-[50%] bg-[#303030] w-[32px] h-[32px] flex items-center justify-center">
