@@ -16,7 +16,7 @@ else{
   document.body.classList.add("bg-night");
 }
 
-console.log(isSmallDevice);
+
 
 if(isSmallDevice && !day){
   document.body.classList.add("bg-night2");

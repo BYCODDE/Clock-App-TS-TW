@@ -7,10 +7,16 @@ interface MainProps {
   setIsLess: React.Dispatch<React.SetStateAction<boolean>>;
   day: boolean;
   setDay: React.Dispatch<React.SetStateAction<boolean>>;
-  isSmallDevice:boolean
+  isSmallDevice: boolean;
 }
 
-export default function Main({ isLess, setIsLess, day, setDay,isSmallDevice }: MainProps) {
+export default function Main({
+  isLess,
+  setIsLess,
+  day,
+  setDay,
+  isSmallDevice,
+}: MainProps) {
   const [timeData, setTimeData] = useState({
     date: "",
     datetime: "",
@@ -69,6 +75,17 @@ export default function Main({ isLess, setIsLess, day, setDay,isSmallDevice }: M
     }
   }, [time.datetime]);
 
+  let message = "";
+  if (day && isSmallDevice) {
+    message = "GOOD MORNING, IT’S CURRENTLY";
+  } else if (!day && isSmallDevice) {
+    message = "GOOD EVENING, IT’S CURRENTLY";
+  } else if (day) {
+    message = "GOOD MORNING";
+  } else {
+    message = "GOOD EVENING";
+  }
+
   return (
     <main
       className={`${
@@ -82,8 +99,8 @@ export default function Main({ isLess, setIsLess, day, setDay,isSmallDevice }: M
           <img src={moon} alt="icon-moon" />
         )}
 
-        <h2 className="md:text-[18px]   text-[15px] leading-[25px] uppercase  tracking-[3px]">
-          {day ? "GOOD MORNING " : "GOOD EVENING"}
+        <h2 className="md:text-[18px] text-[15px] leading-[25px] uppercase tracking-[3px]">
+          {message}
         </h2>
       </div>
       <div className="">
