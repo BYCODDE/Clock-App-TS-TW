@@ -181,30 +181,38 @@ export default function Main({
           }  pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex justify-evenly	 gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0  `}
         >
           <div className="flex flex-col gap-[50px]">
-            <div className="flex justify-between">
-              <p className="font-[400] leading-[28px] tracking-[2px] opacity-80  uppercase">
+            <div className="flex justify-between flex-col items-start">
+              <p className="lg:mb-[10px]    lg:ml-[13px] lg:text-[15px] font-[400] leading-[28px] tracking-[3px] opacity-80  uppercase">
                 CURRENT TIMEZONE
-                <p className="font-bold text-[20px]">{timeData.timezone}</p>
+              </p>
+              <p className=" lg:text-[56px] md:mt-[10px]    font-bold text-[20px]">
+                {timeData.timezone}
               </p>
             </div>
-            <div className="flex justify-between">
-              <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80 ">
+            <div className="flex justify-between flex-col">
+              <p className="lg:text-[15px] lg:mb-[30px]  font-[400] leading-[28px] tracking-[3px] uppercase opacity-80 ">
                 Day of the year
-                <p className="font-bold text-[20px]">{time.day_of_year}</p>
+              </p>
+              <p className="lg:text-[56px] md:mt-[10px]   font-bold text-[20px]">
+                {time.day_of_year}
               </p>
             </div>
           </div>
           <div className="flex flex-col gap-[50px]">
-            <div className="flex justify-between">
-              <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+            <div className="flex justify-between flex-col ">
+              <p className=" lg:text-[15px]   font-[400] leading-[28px] tracking-[3px] uppercase opacity-80 lg:mb-[30px]">
                 Day of the week
-                <p className="font-bold text-[20px]">{time.day_of_week}</p>
+              </p>
+              <p className="lg:text-[56px]  md:mt-[10px]  font-bold text-[20px]">
+                {time.day_of_week}
               </p>
             </div>
-            <div className="flex justify-between">
-              <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+            <div className="flex justify-between flex-col">
+              <p className=" lg:mb-[30px] lg:text-[15px]   font-[400] leading-[28px] tracking-[3px] uppercase opacity-80">
                 Week number
-                <p className="font-bold text-[20px]">{time.week_number}</p>
+              </p>
+              <p className=" lg:text-[56px] md:mt-[10px]   font-bold text-[20px]">
+                {time.week_number}
               </p>
             </div>
           </div>
