@@ -100,11 +100,11 @@ export default function Main({ isLess, setIsLess, day, setDay,isSmallDevice }: M
         </p>
       </div>
       <button
-        className="bg-[#FFF] rounded-[28px] flex p-[13px] pr-[4px] max-h-[39px] justify-between items-center gap-[15px] max-w-[115px] cursor-pointer"
+        className="md:max-w-[146px] md:max-h-[46px]  bg-[#FFF] rounded-[28px] flex p-[13px] pr-[4px] max-h-[39px] justify-between items-center gap-[15px] max-w-[115px] cursor-pointer"
         type="button"
         onClick={() => setIsLess(!isLess)}
       >
-        <span className="text-[#000] font-bold leading-[14px] tracking-[3.75px] uppercase opacity-50">
+        <span className="md:text-[22px]   text-[#000] font-bold leading-[14px] tracking-[3.75px] uppercase opacity-50">
           {isLess ? "LESS" : "MORE"}
         </span>
         <div className="rounded-[50%] bg-[#303030] w-[32px] h-[32px] flex items-center justify-center">
@@ -159,31 +159,35 @@ export default function Main({ isLess, setIsLess, day, setDay,isSmallDevice }: M
             day
               ? " bg-custom-white text-[#303030]"
               : "bg-custom-black text-[#FFF]"
-          }  pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0  `}
+          }  pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex justify-evenly	 gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0  `}
         >
-          <div className="flex justify-between">
-            <p className="font-[400] leading-[28px] tracking-[2px] opacity-80  uppercase">
-              CURRENT TIMEZONE
-            </p>
-            <p className="font-bold text-[20px]">{timeData.timezone}</p>
+          <div className="flex flex-col gap-[50px]">
+            <div className="flex justify-between">
+              <p className="font-[400] leading-[28px] tracking-[2px] opacity-80  uppercase">
+                CURRENT TIMEZONE
+                <p className="font-bold text-[20px]">{timeData.timezone}</p>
+              </p>
+            </div>
+            <div className="flex justify-between">
+              <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80 ">
+                Day of the year
+                <p className="font-bold text-[20px]">{time.day_of_year}</p>
+              </p>
+            </div>
           </div>
-          <div className="flex justify-between">
-            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80 ">
-              Day of the year
-            </p>
-            <p className="font-bold text-[20px]">{time.day_of_year}</p>
-          </div>
-          <div className="flex justify-between">
-            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
-              Day of the week
-            </p>
-            <p className="font-bold text-[20px]">{time.day_of_week}</p>
-          </div>
-          <div className="flex justify-between">
-            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
-              Week number
-            </p>
-            <p className="font-bold text-[20px]">{time.week_number}</p>
+          <div className="flex flex-col gap-[50px]">
+            <div className="flex justify-between">
+              <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+                Day of the week
+                <p className="font-bold text-[20px]">{time.day_of_week}</p>
+              </p>
+            </div>
+            <div className="flex justify-between">
+              <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+                Week number
+                <p className="font-bold text-[20px]">{time.week_number}</p>
+              </p>
+            </div>
           </div>
         </div>
       )}
