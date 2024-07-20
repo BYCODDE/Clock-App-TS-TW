@@ -28,12 +28,15 @@ export default function Header({ isLess }: { isLess: boolean }) {
   return (
     <header>
       <div
-        className={`flex items-center justify-between ${isLess ? "hidden" : "block"}`}
-        // onChange={() => setIsLess(!isLess)}
+        className={`flex items-center justify-between ${
+          isLess ? "hidden" : "block"
+        } md:gap-[15px]`}
       >
-        <div className="max-w-[279px]">
-          <p>{quote}</p>
-          <h3 className="mt-[8px] font-bold">{author}</h3>
+        <div className="md:max-w-[540px]    max-w-[279px]">
+          <p className="md:text-[18px]">{quote}</p>
+          <h3 className="md:text-[18px] mt-[8px] font-bold">
+            {author}
+          </h3>
         </div>
         <img
           className="mb-[20px] mr-[10px] cursor-pointer"

@@ -1,8 +1,25 @@
 .bg-day {
   background-image: url("/mobile/bg-image-daytime.jpg");
 }
+
+.bg-day2 {
+  background-image: url("/tablet/bg-image-daytime.jpg");
+}
+
+.bg-day3 {
+  background-image: url("/desktop/bg-image-daytime.jpg");
+}
+
 .bg-night {
   background-image: url("/mobile/bg-image-nighttime.jpg");
+}
+
+.bg-night2 {
+  background-image: url("/tablet/bg-image-nighttime.jpg");
+}
+
+.bg-night3 {
+  background-image: url("/desktop/bg-image-nighttime.jpg");
 }
 
 #blur {

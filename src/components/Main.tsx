@@ -7,9 +7,10 @@ interface MainProps {
   setIsLess: React.Dispatch<React.SetStateAction<boolean>>;
   day: boolean;
   setDay: React.Dispatch<React.SetStateAction<boolean>>;
+  isSmallDevice:boolean
 }
 
-export default function Main({ isLess, setIsLess, day, setDay }: MainProps) {
+export default function Main({ isLess, setIsLess, day, setDay,isSmallDevice }: MainProps) {
   const [timeData, setTimeData] = useState({
     date: "",
     datetime: "",
@@ -35,7 +36,6 @@ export default function Main({ isLess, setIsLess, day, setDay }: MainProps) {
       const response = await fetch("http://worldtimeapi.org/api/ip");
       const data = await response.json();
       setTime(data);
-      console.log(time);
     } catch (error) {
       console.error("Error fetching time data:", error);
     }
@@ -75,27 +75,27 @@ export default function Main({ isLess, setIsLess, day, setDay }: MainProps) {
         isLess ? "mt-[-12rem]" : "mt-[40%]"
       } flex flex-col justify-items-start`}
     >
-      <div className="flex gap-[20px] items-center">
+      <div className="md:mb-[20px] flex gap-[20px] items-center">
         {day ? (
           <img src={sun} alt="icon-sun" />
         ) : (
           <img src={moon} alt="icon-moon" />
         )}
 
-        <h2 className="text-[15px] leading-[25px] uppercase  tracking-[3px]">
+        <h2 className="md:text-[18px]   text-[15px] leading-[25px] uppercase  tracking-[3px]">
           {day ? "GOOD MORNING " : "GOOD EVENING"}
         </h2>
       </div>
       <div className="">
         <div className="mt-[16px] flex items-end gap-[13px]">
-          <p className="text-[100px] leading-[100px] uppercase  tracking-[-2.5px] font-bold">
+          <p className="md:text-[175px]    text-[100px] leading-[100px] uppercase  tracking-[-2.5px] font-bold">
             {time.datetime.slice(11, 16)}
           </p>
-          <span className="text-[15px] leading-[28px] uppercase  font-[300]">
+          <span className="md:text-[32px] text-[15px] leading-[28px] uppercase  font-[300]">
             {timeData.country_code_iso3}
           </span>
         </div>
-        <p className="font-bold text-[15px] leading-[28px] uppercase  tracking-[3px]  mt-[16px] mb-[48px]">
+        <p className="md:mt-[40px] md:text-[18px] font-bold text-[15px] leading-[28px] uppercase  tracking-[3px]  mt-[16px] mb-[48px]">
           IN {timeData.country_capital}, {timeData.country_code}
         </p>
       </div>
@@ -120,11 +120,46 @@ export default function Main({ isLess, setIsLess, day, setDay }: MainProps) {
       {isLess && (
         <div
           id={"blur"}
-          className={`${
+          className={`${isLess && isSmallDevice ? "hidden" : "block"} ${
             day
               ? " bg-custom-white text-[#303030]"
               : "bg-custom-black text-[#FFF]"
           } pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0  `}
+        >
+          <div className="flex justify-between">
+            <p className="font-[400] leading-[28px] tracking-[2px] opacity-80  uppercase">
+              CURRENT TIMEZONE
+            </p>
+            <p className="font-bold text-[20px]">{timeData.timezone}</p>
+          </div>
+          <div className="flex justify-between">
+            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80 ">
+              Day of the year
+            </p>
+            <p className="font-bold text-[20px]">{time.day_of_year}</p>
+          </div>
+          <div className="flex justify-between">
+            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+              Day of the week
+            </p>
+            <p className="font-bold text-[20px]">{time.day_of_week}</p>
+          </div>
+          <div className="flex justify-between">
+            <p className="font-[400] leading-[28px] tracking-[2px] uppercase opacity-80">
+              Week number
+            </p>
+            <p className="font-bold text-[20px]">{time.week_number}</p>
+          </div>
+        </div>
+      )}
+      {isLess && isSmallDevice && (
+        <div
+          id={"blur"}
+          className={`${
+            day
+              ? " bg-custom-white text-[#303030]"
+              : "bg-custom-black text-[#FFF]"
+          }  pt-[48px] pb-[48px] pr-[26px] pl-[26px] flex flex-col gap-[16px] mt-[52px]  absolute bottom-0 w-full  left-0  `}
         >
           <div className="flex justify-between">
             <p className="font-[400] leading-[28px] tracking-[2px] opacity-80  uppercase">
